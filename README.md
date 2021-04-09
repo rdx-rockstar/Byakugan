@@ -1,4 +1,5 @@
 <img src="https://media.sandhills.com/img.axd?id=4206255449&wid=&p=&ext=&w=0&h=0&t=&lp=&c=True&wt=False&sz=Max&rt=0&checksum=bg2KnWe3eNRDk7R0oE2FtdZNDo72zgJH" align="right" />
+
 <img src="https://lh3.googleusercontent.com/jzAiuzLP2AxTq8jqXHQLqcO8GIPZ4q7cLqs8LzVbTuUiJE7kArttfniodGyBiSa_ZABGvAO-mIp9FtxJgTr6EMgL66zvUPMpPtCsAxhxU3Z42HhS3byOUKnCG_mQ31bYJnNQ_ull5Q=w181-h184-p-k" align="right" />
 
 
@@ -7,8 +8,8 @@
 
 ### Team name : Heavy Drivers (sophomore)
 1. Karimulla Mohd.
-2. Mohd Sahil
-3. Amit Gupta
+2. Amit Gupta
+3. Mohd Sahil
 4. Aman Singh
 <!-- Horizontal Rule -->
 ---
