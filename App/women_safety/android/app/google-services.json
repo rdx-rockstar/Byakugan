@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "1089646009684",
+    "project_id": "hack36-3",
+    "storage_bucket": "hack36-3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1089646009684:android:3f5c304713b1d595f7bcc1",
+        "android_client_info": {
+          "package_name": "com.example.women_safety"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1089646009684-qh92ugmthlhp6jkmhaobne292ldf6vmd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSUln9NTfd93KyhhCzK7QqQ2a9iOrRALE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1089646009684-qh92ugmthlhp6jkmhaobne292ldf6vmd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1089646009684:android:83131cabe4e53eecf7bcc1",
+        "android_client_info": {
+          "package_name": "com.filledstacks.boxtout"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1089646009684-qh92ugmthlhp6jkmhaobne292ldf6vmd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSUln9NTfd93KyhhCzK7QqQ2a9iOrRALE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1089646009684-qh92ugmthlhp6jkmhaobne292ldf6vmd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
