@@ -6,6 +6,8 @@ import 'package:women_safety/services/auth.dart';
 import 'package:women_safety/models/user.dart';
 import 'package:women_safety/screens/show_pages.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert' as convert;
 
 class Home extends StatelessWidget {
   static MethodChannel _channel = MethodChannel("service_channel");
@@ -25,16 +27,22 @@ class Home extends StatelessWidget {
         elevation: 0.2,
         actions: <Widget>[
           IconButton(
-              onPressed: () {
-                _channel.invokeMethod("victim").then((value){
+              onPressed: () async {
+                _channel.invokeMethod("victim").then((value) async {
                     if(value!="-"){
-                      LatLng userDestination = new LatLng(26.852174, 80.938358);
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => MapOnCall(userDestination,value)
-                          )
-                      );
+                      var response = await http.get(Uri.parse("http://192.168.43.57:3000/getLocation/"+value));
+                      if (response.statusCode == 200) {
+                        var jsonResponse = convert.jsonDecode(response.body);
+                        LatLng userDestination = new LatLng(jsonResponse['latitude'], jsonResponse['longitude']);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MapOnCall(userDestination, value)
+                            )
+                        );
+                      } else {
+                        print('API Request failed with status: ${response.statusCode}.');
+                      }
                     }
                     else{
                       Fluttertoast.showToast(
