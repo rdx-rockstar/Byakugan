@@ -21,7 +21,7 @@ With the growing cases of molestation and rapes, it’s a high time for us to co
 <!-- Horizontal Rule -->
 ---
 
-### Features (to be revealed)
+### Features
 
 #### 1.) THE BEST ROUTE
 Case:<br>
