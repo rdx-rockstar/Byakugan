@@ -1,5 +1,6 @@
 package com.example.women_safety;
 import android.app.Service;
+import android.graphics.Color;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
@@ -9,7 +10,6 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import com.example.women_safety.MainActivity;
-//import android.support.v4.app.NotificationCompat;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
@@ -27,7 +27,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -175,20 +174,23 @@ public class background_location_service extends Service implements LocationList
 //        Toast.makeText(getApplicationContext(), location.getLatitude()+"", Toast.LENGTH_SHORT).show();
         editor.apply();
     }
-    private void addNotification(String email) {
-//        NotificationCompat.Builder builder=
-//                new NotificationCompat.Builder(this)
-//                        .setSmallIcon(R.mipmap.logo)
-//                        .setContentTitle("Its helping time")
-//                        .setContentText(email+" requiere help");
-//
-//        Intent notificationIntent = new Intent(this, MainActivity.class);
-//        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent,
-//                PendingIntent.FLAG_UPDATE_CURRENT);
-//        builder.setContentIntent(contentIntent);
-//
-//        // Add as notification
-//        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-//        manager.notify(0, builder.build());
+    private void addNotification(String email){
+        String NOTIFICATION_CHANNEL_ID = "com.example.women_safety";
+        String channelName = "My helper notification";
+        NotificationChannel chan = new NotificationChannel(NOTIFICATION_CHANNEL_ID, channelName, NotificationManager.IMPORTANCE_NONE);
+        chan.setLightColor(Color.BLUE);
+        chan.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        assert manager != null;
+        manager.createNotificationChannel(chan);
+        Intent notificationIntent = new Intent(this, MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
+        Notification notification = new Notification.Builder(this, NOTIFICATION_CHANNEL_ID)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle("Its Helping time")
+                .setContentText(email+" requiere help")
+                .setContentIntent(pendingIntent)
+                .build();
+        manager.notify(0, notification);
     }
 }
