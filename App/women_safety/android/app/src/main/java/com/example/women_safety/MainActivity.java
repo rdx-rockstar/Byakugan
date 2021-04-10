@@ -46,7 +46,7 @@ public class MainActivity extends FlutterActivity {
                                     Log.v("my bck","starting bacground service");
                                     startService(intent);
                                     break;
-                                case "getVictim":
+                                case "victim":
                                     result.success(myPrefs.getString("victim","-"));
                                     editor.putString("victim","-");
                                     editor.apply();

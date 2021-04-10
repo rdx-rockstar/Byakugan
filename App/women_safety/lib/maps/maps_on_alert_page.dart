@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'api.dart'; // Stores the Google Maps API Key
+import 'dart:async';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
@@ -8,7 +9,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:math' show cos, sqrt, asin;
 
 LatLng userDestination;
-
+String email;
 // Example to open this page
 // LatLng userDestination = new LatLng(26.852174, 80.938358);
 //               Navigator.push(
@@ -17,7 +18,8 @@ LatLng userDestination;
 //                       builder: (context) => MapOnCall(userDestination)));
 
 class MapOnCall extends StatelessWidget {
-  MapOnCall(LatLng p) {
+  MapOnCall(LatLng p,String em) {
+    email=em;
     userDestination = p;
     print(userDestination);
   }
@@ -484,7 +486,9 @@ class _MapViewState extends State<MapView> {
   @override
   void initState() {
     super.initState();
-    _getCurrentLocation();
+  }
+  void updateLocation() async{
+    userDestination=new LatLng(26.852174, 80.938358);
   }
 
   @override
@@ -543,6 +547,11 @@ class _MapViewState extends State<MapView> {
               onMapCreated: (GoogleMapController controller) {
                 // mapController.complete(controller);
                 mapController = controller;
+                _getCurrentLocation();
+                Timer.periodic(Duration(seconds: 10), (timer) async {
+                  updateLocation();
+                  _getCurrentLocation();
+                });
               },
             ),
             // Show zoom buttons

@@ -5,6 +5,7 @@ import 'package:women_safety/maps/maps_on_alert_page.dart';
 import 'package:women_safety/services/auth.dart';
 import 'package:women_safety/models/user.dart';
 import 'package:women_safety/screens/show_pages.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Home extends StatelessWidget {
   static MethodChannel _channel = MethodChannel("service_channel");
@@ -25,11 +26,24 @@ class Home extends StatelessWidget {
         actions: <Widget>[
           IconButton(
               onPressed: () {
-                LatLng userDestination = new LatLng(26.852174, 80.938358);
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => MapOnCall(userDestination)));
+                _channel.invokeMethod("victim").then((value){
+                    if(value!="-"){
+                      LatLng userDestination = new LatLng(26.852174, 80.938358);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MapOnCall(userDestination,value)));
+                    }
+                    else{
+                      Fluttertoast.showToast(
+                          msg: "Everyone nearby is safe",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.CENTER,
+                          timeInSecForIosWeb: 1,
+                      );
+                    }
+                });
+
               },
               icon: Icon(Icons.notification_important)),
           TextButton.icon(

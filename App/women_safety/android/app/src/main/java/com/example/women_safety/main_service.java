@@ -91,7 +91,7 @@ public class main_service extends Service{
         Notification notification = new Notification.Builder(this, NOTIFICATION_CHANNEL_ID)
                 .setSmallIcon(R.mipmap.logo)
                 .setContentTitle("Your Ride Manager")
-                .setContentText("Wish you a happy ride.")
+                .setContentText("Wish you a happy ride")
                 .setContentIntent(pendingIntent)
                 .addAction(R.mipmap.ic_launcher, "Alert", alertIntent)
                 .addAction(R.mipmap.ic_launcher, "End Ride", endIntent)
