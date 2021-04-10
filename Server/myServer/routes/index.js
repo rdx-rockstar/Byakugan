@@ -21,7 +21,7 @@ router.get('/user/:email/:latitude/:longitude', function(req, res, next) {
         latitude:latitude,
         longitude:longitude,
         time:getDateTime(),
-        victims:" "
+        victims:"-"
       });
     }
     else{
@@ -30,7 +30,7 @@ router.get('/user/:email/:latitude/:longitude', function(req, res, next) {
       User.time=getDateTime();
     }
     res.send(User.victims);
-    User.victims=" ";
+    User.victims="-";
     await User.save(function(err){
       if (err) return console.error(err);
     });
@@ -54,7 +54,7 @@ router.get('/rider/:email', function(req, res, next){
       if (err) return console.error(err);
     });
   });
-  res.send(" ");
+  res.send("-");
 });
 
 router.get('/endRide/:email', function(req, res, next) {
@@ -71,7 +71,7 @@ router.get('/endRide/:email', function(req, res, next) {
     console.log("no rider to remove");
   }
  });
- res.send(" ");
+ res.send("-");
 });
 
 router.get('/alert/:email', function(req, res, next){
@@ -112,7 +112,7 @@ router.get('/alert/:email', function(req, res, next){
       });   
     });
   });
-  res.send(" ");
+  res.send("-");
 });
 
 router.get('/getLocation/:email',function(req, res, next){

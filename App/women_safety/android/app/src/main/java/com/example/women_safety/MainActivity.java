@@ -47,6 +47,9 @@ public class MainActivity extends FlutterActivity {
 //                                        startService(intent);
                                     }
                                     break;
+                                case "getVictim":
+                                    result.success(myPrefs.getString("victim","-"));
+                                    break;
                                 case "on_off":
                                     boolean flag=true;
                                     flag=flag && isAudioPermissionGranted();
@@ -58,14 +61,14 @@ public class MainActivity extends FlutterActivity {
                                     Intent intent = new Intent(MainActivity.this, background_location_service.class);
                                     Log.v("my bck","starting bacground service");
                                     startService(intent);
-                                    if(myPrefs.getBoolean("isOn",false)==false) {
+                                    if(myPrefs.getBoolean("isOn",false)==false){
                                         Intent start = new Intent(MainActivity.this, main_service.class);
                                         startService(start);
                                         editor.putBoolean("isOn",true);
                                         editor.apply();
                                         result.success("1");
                                     }
-                                    else {
+                                    else{
                                         Intent stop = new Intent(MainActivity.this, main_service.class);
                                         stopService(stop);
                                         editor.putBoolean("isOn",false);

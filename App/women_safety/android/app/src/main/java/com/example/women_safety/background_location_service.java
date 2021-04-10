@@ -150,7 +150,11 @@ public class background_location_service extends Service implements LocationList
                                 @Override
                                 public void onResponse(String response) {
                                     Log.v("my response","from user"+response);
-                                    if(response!=" "){
+                                    if(!response.contains("-")){
+                                        SharedPreferences myPrefs = getSharedPreferences("myService", Context.MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = myPrefs.edit();
+                                        editor.putString("victim",response);
+                                        editor.apply();
                                         addNotification(response);
                                     }
                                 }
