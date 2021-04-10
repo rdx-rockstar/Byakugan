@@ -12,7 +12,7 @@ class Home extends StatelessWidget {
   final AuthService _auth = AuthService();
   Home(User user){
     _channel.invokeMethod("setEmail",<String, dynamic>{
-    'email': user.email,
+    'email': user.phone,
     }).then((value){});
   }
   @override
@@ -32,7 +32,9 @@ class Home extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => MapOnCall(userDestination,value)));
+                              builder: (context) => MapOnCall(userDestination,value)
+                          )
+                      );
                     }
                     else{
                       Fluttertoast.showToast(
