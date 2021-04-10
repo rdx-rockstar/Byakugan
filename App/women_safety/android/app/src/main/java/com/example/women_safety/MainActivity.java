@@ -48,6 +48,8 @@ public class MainActivity extends FlutterActivity {
                                     break;
                                 case "getVictim":
                                     result.success(myPrefs.getString("victim","-"));
+                                    editor.putString("victim","-");
+                                    editor.apply();
                                     break;
                                 case "on_off":
                                     boolean flag=true;
