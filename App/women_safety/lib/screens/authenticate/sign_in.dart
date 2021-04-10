@@ -15,8 +15,7 @@ class _SignInState extends State<SignIn> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
 
-  String email = '';
-  String password = '';
+  String number = '';
   String error = '';
 
   @override
@@ -27,15 +26,6 @@ class _SignInState extends State<SignIn> {
         backgroundColor: Colors.amber[800],
         elevation: 0.0,
         title: Text('Login'),
-        actions: <Widget>[
-          FlatButton.icon(
-            icon: Icon(Icons.person,color: Colors.white),
-            label: Text('Register',style:TextStyle(color: Colors.white),),
-            onPressed: () {
-              widget.toggelView();
-            },
-          )
-        ],
       ),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
@@ -47,17 +37,10 @@ class _SignInState extends State<SignIn> {
                 children: <Widget>[
                   SizedBox(height: 20.0,),
                   TextFormField(
-                    validator: (val) => val.isEmpty ? 'Enter an email': null,
-                    onChanged: (val) {
-                      setState(() => email = val);
-                    },
-                  ),
-                  SizedBox(height: 20.0,),
-                  TextFormField(
                     obscureText: true,
-                    validator: (val) => val.length < 6 ? 'Enter a password 6+ chars long': null,
+                    validator: (val) => val.length < 10 ? 'Enter a valid Phone Number': null,
                     onChanged: (val) {
-                      setState(() => password = val);
+                      setState(() => number = val);
                     },
                   ),
                   SizedBox(height: 20.0,),
@@ -69,11 +52,7 @@ class _SignInState extends State<SignIn> {
                     ),
                     onPressed: () async {
                       if (_formKey.currentState.validate()) {
-                        dynamic result = await _auth.signinWithEmailAndPassword(email, password);
-                        print(result);
-                        if(result == null){
-                          setState(() => error = 'Invalid Email and Password');
-                        }
+                        dynamic result = await _auth.signInWithPhoneNumber(number, context);
                       }
                     },
                   ),

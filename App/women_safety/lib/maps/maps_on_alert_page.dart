@@ -5,6 +5,8 @@ import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert' as convert;
 
 import 'dart:math' show cos, sqrt, asin;
 
@@ -488,7 +490,13 @@ class _MapViewState extends State<MapView> {
     super.initState();
   }
   void updateLocation() async{
-    userDestination=new LatLng(26.852174, 80.938358);
+    var response = await http.get(Uri.parse("http://192.168.43.57:3000/getLocation/"+email));
+    if (response.statusCode == 200) {
+      var jsonResponse = convert.jsonDecode(response.body);
+      userDestination=new LatLng(26.852174, 80.938358);
+    } else {
+      print('API Request failed with status: ${response.statusCode}.');
+    }
   }
 
   @override
