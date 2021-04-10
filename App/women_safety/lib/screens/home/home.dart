@@ -30,19 +30,18 @@ class Home extends StatelessWidget {
               onPressed: () async {
                 _channel.invokeMethod("victim").then((value) async {
                     if(value!="-"){
-                      var response = await http.get(Uri.parse("http://192.168.43.57:3000/getLocation/"+value));
-                      if (response.statusCode == 200) {
-                        var jsonResponse = convert.jsonDecode(response.body);
-                        LatLng userDestination = new LatLng(jsonResponse['latitude'], jsonResponse['longitude']);
+                        LatLng userDestination;
+                      _channel.invokeMethod("getLat",<String, dynamic>{
+                      'email': value}).then((val){
+                        var jsonResponse = convert.jsonDecode(val);
+                        userDestination=new LatLng(double.parse(jsonResponse['latitude']), double.parse(jsonResponse['longitude']));
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => MapOnCall(userDestination, value)
                             )
                         );
-                      } else {
-                        print('API Request failed with status: ${response.statusCode}.');
-                      }
+                      });
                     }
                     else{
                       Fluttertoast.showToast(

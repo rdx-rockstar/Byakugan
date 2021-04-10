@@ -207,6 +207,9 @@ public class main_service extends Service{
                         String email=myPrefs.getString("email","test@gmail.com");
                         String longitude=myPrefs.getString("longitude","0");
                         String latitude=myPrefs.getString("latitude","0");
+                        if(latitude.equals("0")&&longitude.equals("0")){
+                            return;
+                        }
                         String url ="http://192.168.43.57:3000/rider/"+email;
                         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                                 new Response.Listener<String>() {

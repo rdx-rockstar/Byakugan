@@ -98,7 +98,11 @@ public class background_location_service extends Service implements LocationList
         isNetworkEnable = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
         if (!isGPSEnable && !isNetworkEnable){
-            Log.v("my net,gps","null");
+            SharedPreferences myPrefs = getSharedPreferences("myService", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = myPrefs.edit();
+            editor.putString("longitude","0");
+            editor.putString("latitude","0");
+            editor.apply();
         }else {
             if (isNetworkEnable){
                 location = null;

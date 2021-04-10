@@ -18,6 +18,12 @@ import static android.Manifest.permission.RECORD_AUDIO;
 import android.util.Log;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 public class MainActivity extends FlutterActivity {
     public static Context mainContext;
@@ -39,6 +45,13 @@ public class MainActivity extends FlutterActivity {
                                 case "test":
                                     result.success("working");
                                     break;
+                                case "perm":
+                                    boolean flg=true;
+                                    flg=flg && isAudioPermissionGranted();
+                                    flg=flg && isLocationPermissionGranted();
+                                    flg=flg && isInternetPermissionGranted();
+                                    flg=flg && isInternetStatePermissionGranted();
+                                    break;
                                 case "setEmail":
                                     String email=call.argument("email");
                                     editor.putString("email",email);
@@ -51,6 +64,26 @@ public class MainActivity extends FlutterActivity {
                                     result.success(myPrefs.getString("victim","-"));
                                     editor.putString("victim","-");
                                     editor.apply();
+                                    break;
+                                case "getLat":
+                                    String emai=call.argument("email");
+                                    SharedPreferences myPref = getSharedPreferences("myService", Context.MODE_PRIVATE);
+                                    String url ="http://192.168.43.57:3000/getLocation/"+emai;
+                                    StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                                            new Response.Listener<String>() {
+                                                @Override
+                                                public void onResponse(String response) {
+                                                    Log.v("my response","from user"+response);
+                                                        result.success(response);
+                                                }
+                                            }, new Response.ErrorListener(){
+                                        @Override
+                                        public void onErrorResponse(VolleyError error) {
+                                            Log.v("my request","error came by "+error);
+                                        }
+                                    });
+                                    RequestQueue queue = Volley.newRequestQueue(MainActivity.mainContext);
+                                    queue.add(stringRequest);
                                     break;
                                 case "on_off":
                                     boolean flag=true;
