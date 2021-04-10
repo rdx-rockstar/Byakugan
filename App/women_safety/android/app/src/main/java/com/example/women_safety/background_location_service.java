@@ -190,7 +190,7 @@ public class background_location_service extends Service implements LocationList
         Intent notificationIntent = new Intent(this, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
         Notification notification = new Notification.Builder(this, NOTIFICATION_CHANNEL_ID)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.mipmap.logo)
                 .setContentTitle("Its Helping time")
                 .setContentText(email+" requiere help")
                 .setContentIntent(pendingIntent)

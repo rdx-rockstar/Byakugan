@@ -34,6 +34,7 @@ public class MainActivity extends FlutterActivity {
                         (call, result) -> {
                             SharedPreferences myPrefs = getSharedPreferences("myService", Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor = myPrefs.edit();
+                            mainContext=MainActivity.this;
                             switch (call.method) {
                                 case "test":
                                     result.success("working");
@@ -41,11 +42,9 @@ public class MainActivity extends FlutterActivity {
                                 case "setEmail":
                                     String email=call.argument("email");
                                     editor.putString("email",email);
-                                    if(myPrefs.getBoolean("backgroundService",false)==false){
-//                                        Intent intent = new Intent(MainActivity.this, background_location_service.class);
-//                                        Log.v("my bck","starting bacground service");
-//                                        startService(intent);
-                                    }
+                                    Intent intent = new Intent(MainActivity.this, background_location_service.class);
+                                    Log.v("my bck","starting bacground service");
+                                    startService(intent);
                                     break;
                                 case "getVictim":
                                     result.success(myPrefs.getString("victim","-"));
@@ -57,10 +56,10 @@ public class MainActivity extends FlutterActivity {
                                     flag=flag && isInternetPermissionGranted();
                                     flag=flag && isInternetStatePermissionGranted();
                                     if(flag==false){break;}
-                                    mainContext=MainActivity.this;
-                                    Intent intent = new Intent(MainActivity.this, background_location_service.class);
-                                    Log.v("my bck","starting bacground service");
-                                    startService(intent);
+//                                    mainContext=MainActivity.this;
+//                                    Intent intent = new Intent(MainActivity.this, background_location_service.class);
+//                                    Log.v("my bck","starting bacground service");
+//                                    startService(intent);
                                     if(myPrefs.getBoolean("isOn",false)==false){
                                         Intent start = new Intent(MainActivity.this, main_service.class);
                                         startService(start);

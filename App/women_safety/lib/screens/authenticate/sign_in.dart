@@ -24,13 +24,13 @@ class _SignInState extends State<SignIn> {
     return Scaffold(
       backgroundColor: Colors.brown[100],
       appBar: AppBar(
-        backgroundColor: Colors.brown[400],
+        backgroundColor: Colors.blue[400],
         elevation: 0.0,
         title: Text('Login'),
         actions: <Widget>[
           FlatButton.icon(
-            icon: Icon(Icons.person),
-            label: Text('Register'),
+            icon: Icon(Icons.person,color: Colors.white),
+            label: Text('Register',style:TextStyle(color: Colors.white),),
             onPressed: () {
               widget.toggelView();
             },
