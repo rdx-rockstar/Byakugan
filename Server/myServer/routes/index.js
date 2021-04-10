@@ -118,7 +118,7 @@ router.get('/alert/:email', function(req, res, next){
 router.get('/getLocation/:email',function(req, res, next){
   var email=req.params.email;
   user.findOne({email: email},async(err,User)=>{
-    res.send(User.latitude+" "+User.longitude+" "+User.time);
+    res.json({"latitude":User.latitude,"longitude":User.longitude,"date":User.time});
   });
 });
 
