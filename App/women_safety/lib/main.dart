@@ -12,12 +12,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-        providers: [
-          StreamProvider<User>(create: (_) => AuthService().user),
-        ],
-        child: MaterialApp(
-          home: Wrapper(),
-        ),
+      providers: [
+        StreamProvider<User>(create: (_) => AuthService().user),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Wrapper(),
+      ),
     );
   }
 }
