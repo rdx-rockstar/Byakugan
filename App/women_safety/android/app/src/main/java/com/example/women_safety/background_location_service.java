@@ -172,7 +172,7 @@ public class background_location_service extends Service implements LocationList
         SharedPreferences.Editor editor = myPrefs.edit();
         editor.putString("latitude",location.getLatitude()+"");
         editor.putString("longitude",location.getLongitude()+"");
-        Toast.makeText(getApplicationContext(), location.getLatitude()+"", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), location.getLatitude()+"", Toast.LENGTH_SHORT).show();
         editor.apply();
     }
     private void addNotification(String email) {
