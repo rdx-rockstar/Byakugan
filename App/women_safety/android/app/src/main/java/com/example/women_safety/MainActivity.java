@@ -42,6 +42,7 @@ public class MainActivity extends FlutterActivity {
                                 case "setEmail":
                                     String email=call.argument("email");
                                     editor.putString("email",email);
+                                    editor.apply();
                                     Intent intent = new Intent(MainActivity.this, background_location_service.class);
                                     Log.v("my bck","starting bacground service");
                                     startService(intent);
