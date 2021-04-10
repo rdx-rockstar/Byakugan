@@ -43,40 +43,40 @@ class _ShowPagesState extends State<ShowPages> {
         onTap: changePage,
         items: [
           BubbleBottomBarItem(
-            backgroundColor: Colors.blue,
+            backgroundColor: Colors.amber[900],
             icon: Icon(
               Icons.home,
               color: Colors.black,
             ),
             activeIcon: Icon(
               Icons.home,
-              color: Colors.deepPurple,
+              color: Colors.amber[900],
             ),
             title: Text('Home'),
           ),
           BubbleBottomBarItem(
-            backgroundColor: Colors.indigo,
+            backgroundColor: Colors.amber[900],
             icon: Icon(
               Icons.location_on,
               color: Colors.black,
             ),
             activeIcon: Icon(
               Icons.location_on,
-              color: Colors.deepPurple,
+              color: Colors.amber[900],
             ),
             title: Text('Safe Routes'),
           ),
           BubbleBottomBarItem(
-            backgroundColor: Colors.deepPurple,
+            backgroundColor: Colors.amber[900],
             icon: Icon(
               Icons.people_alt,
               color: Colors.black,
             ),
             activeIcon: Icon(
               Icons.people_alt,
-              color: Colors.deepPurple,
+              color: Colors.amber[900],
             ),
-            title: Text('Friends Near You'),
+            title: Text('Friends'),
           ),
         ],
       ),
