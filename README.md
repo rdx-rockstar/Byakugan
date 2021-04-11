@@ -49,3 +49,5 @@ In the Alert mode we have an optional feature to set the estimate time for the j
 
 #### 5.) ALL ON THE TIP OF YOUR FINGERS
 To provide you with most of the information within our app we will also provides the closest hospital police station and other. 
+<!-- Horizontal Rule -->
+---
