@@ -4,9 +4,9 @@
 
 
 # Byakugan
-## Hack36 4.0
+<a href="https://hack36.com"> <img src="http://bit.ly/BuiltAtHack36" height=20px> </a>
 
-### Team name : Heavy Drivers (sophomore)
+### Team name : Heavy Drivers
 1. Karimulla Mohd.
 2. Amit Gupta
 3. Mohd Sahil
