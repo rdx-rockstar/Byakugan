@@ -12,10 +12,13 @@
 3. Mohd Sahil
 4. Aman Singh
 
-#### SECURED OVERALL 2ND RUNNER UP POSITION & BEST SOPHOMORE TEAM
+#### SECURED OVERALL 2ND RUNNER UP POSITION & BEST SOPHOMORE TEAM AT HACK36
 
 ### Video Link:
 https://www.youtube.com/watch?v=3oxpe-XciMU
+
+### Devfolio Link: 
+https://devfolio.co/submissions/byakugan-6844
 
 <!-- Horizontal Rule -->
 ---
